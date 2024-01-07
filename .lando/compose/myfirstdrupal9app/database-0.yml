@@ -1,0 +1,17 @@
+services:
+  database:
+    image: 'bitnami/mysql:5.7'
+    command: /launch.sh
+    environment:
+      ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_AUTHENTICATION_PLUGIN: mysql_native_password
+      MYSQL_DATABASE: drupal9
+      MYSQL_PASSWORD: drupal9
+      MYSQL_USER: drupal9
+      LANDO_NEEDS_EXEC: DOEEET
+    volumes:
+      - '/home/tars/.lando/config/mysql/launch.sh:/launch.sh'
+      - >-
+        /home/tars/.lando/config/mysql/my_custom.cnf:/opt/bitnami/mysql/conf/my_custom.cnf
+      - 'data_database:/bitnami/mysql/data'
+version: '3.6'

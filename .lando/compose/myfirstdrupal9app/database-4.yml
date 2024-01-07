@@ -1,0 +1,4 @@
+services:
+  database:
+    image: 'bitnami/mysql:5.7.29-debian-10-r51'
+version: '3.6'

@@ -1,0 +1,6 @@
+services:
+  appserver:
+    working_dir: /app
+    environment:
+      LANDO_SERVICE_TYPE: webserver
+version: '3.6'

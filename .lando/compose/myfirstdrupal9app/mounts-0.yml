@@ -1,0 +1,8 @@
+services:
+  appserver:
+    volumes:
+      - '/home/tars:/app:cached'
+  database:
+    volumes:
+      - '/home/tars:/app:cached'
+version: '3.6'

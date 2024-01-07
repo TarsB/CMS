@@ -1,0 +1,6 @@
+services:
+  database:
+    environment:
+      LANDO_WEBROOT: /app/undefined
+      LANDO_SERVICE_TYPE: service
+version: '3.6'

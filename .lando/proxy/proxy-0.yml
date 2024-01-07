@@ -1,0 +1,26 @@
+services:
+  proxy:
+    image: 'traefik:2.2.0'
+    command: >-
+      /entrypoint.sh --log.level=DEBUG --api.insecure=true --api.dashboard=false
+      --providers.docker=true --entrypoints.https.address=:443
+      --entrypoints.http.address=:80 --providers.docker.exposedbydefault=false
+      --providers.file.directory=/proxy_config --providers.file.watch=true
+    environment:
+      LANDO_APP_PROJECT: _lando_
+      LANDO_EXTRA_NAMES: DNS.100 = *.lndo.site
+      LANDO_PROXY_CONFIG_FILE: /proxy_config/proxy.yaml
+      LANDO_PROXY_PASSTHRU: 'true'
+      LANDO_VERSION: 3.20.4
+    networks:
+      - edge
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - '/home/tars/.lando/scripts/proxy-certs.sh:/scripts/100-proxy-certs'
+      - 'proxy_config:/proxy_config'
+networks:
+  edge:
+    driver: bridge
+volumes:
+  proxy_config: {}
+version: '3.6'

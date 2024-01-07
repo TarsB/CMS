@@ -1,0 +1,3 @@
+services:
+  database: {}
+version: '3.6'

@@ -1,0 +1,27 @@
+services:
+  database:
+    entrypoint: /lando-entrypoint.sh
+    environment:
+      LANDO_SERVICE_NAME: database
+      LANDO_SERVICE_TYPE: mysql
+    labels:
+      io.lando.http-ports: '80,443'
+      io.lando.https-ports: '443'
+    logging:
+      driver: json-file
+      options:
+        max-file: '3'
+        max-size: 10m
+    ports: []
+    volumes:
+      - '/home/tars/.lando:/lando:cached'
+      - '/home/tars/.lando/scripts:/helpers'
+      - '/home/tars/.lando/scripts/lando-entrypoint.sh:/lando-entrypoint.sh'
+      - 'home_database:/var/www'
+      - '/home/tars:/user:cached'
+      - >-
+        /home/tars/.lando/config/drupal9/mysql.cnf:/opt/bitnami/mysql/conf/my_custom.cnf
+volumes:
+  data_database: {}
+  home_database: {}
+version: '3.6'

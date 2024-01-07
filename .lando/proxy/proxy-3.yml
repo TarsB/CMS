@@ -1,0 +1,26 @@
+services:
+  proxy:
+    entrypoint: /lando-entrypoint.sh
+    environment:
+      LANDO_SERVICE_NAME: proxy
+      LANDO_SERVICE_TYPE: traefix
+    labels:
+      io.lando.http-ports: '80,443'
+      io.lando.https-ports: '443'
+    logging:
+      driver: json-file
+      options:
+        max-file: '3'
+        max-size: 10m
+    ports: []
+    volumes:
+      - '/home/tars/.lando:/lando:cached'
+      - '/home/tars/.lando/scripts:/helpers'
+      - '/home/tars/.lando/scripts/lando-entrypoint.sh:/lando-entrypoint.sh'
+      - 'home_proxy:/var/www'
+      - '/home/tars/.lando/scripts/add-cert.sh:/scripts/000-add-cert'
+      - '/home/tars/.lando/scripts/refresh-certs.sh:/scripts/999-refresh-certs'
+volumes:
+  data_proxy: {}
+  home_proxy: {}
+version: '3.6'

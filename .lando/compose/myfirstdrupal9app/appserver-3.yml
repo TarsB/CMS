@@ -1,0 +1,6 @@
+services:
+  appserver:
+    environment:
+      SIMPLETEST_BASE_URL: 'https://appserver'
+      SIMPLETEST_DB: 'mysql://drupal9:drupal9@database/drupal9'
+version: '3.6'

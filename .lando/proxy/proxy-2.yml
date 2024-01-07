@@ -1,0 +1,26 @@
+services:
+  proxy:
+    environment:
+      COLUMNS: 256
+      LANDO: 'ON'
+      LANDO_WEBROOT_USER: www-data
+      LANDO_WEBROOT_GROUP: www-data
+      TERM: xterm
+      LANDO_HOST_UID: '1000'
+      LANDO_HOST_GID: '1000'
+      LANDO_HOST_USER: tars
+      LANDO_CA_CERT: /lando/certs/lndo.site.pem
+      LANDO_CA_KEY: /lando/certs/lndo.site.key
+      LANDO_CONFIG_DIR: /home/tars/.lando
+      LANDO_DOMAIN: lndo.site
+      LANDO_HOST_HOME: /home/tars
+      LANDO_HOST_OS: linux
+      LANDO_HOST_IP: 172.26.88.114
+      LANDO_LEIA: 0
+      LANDO_MOUNT: /app
+      LANDO_NO_USER_PERMS: NOTGONNADOIT
+    labels:
+      io.lando.container: 'TRUE'
+      io.lando.id: bb3930c678d6b1a322e9259149c7c9df75a57ab7
+      io.lando.service-container: 'TRUE'
+version: '3.6'

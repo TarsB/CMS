@@ -1,0 +1,82 @@
+services:
+  appserver:
+    networks:
+      default: {}
+    environment:
+      COLUMNS: 256
+      LANDO: 'ON'
+      LANDO_WEBROOT_USER: www-data
+      LANDO_WEBROOT_GROUP: www-data
+      TERM: xterm
+      LANDO_HOST_UID: '1000'
+      LANDO_HOST_GID: '1000'
+      LANDO_HOST_USER: tars
+      LANDO_CA_CERT: /lando/certs/lndo.site.pem
+      LANDO_CA_KEY: /lando/certs/lndo.site.key
+      LANDO_CONFIG_DIR: /home/tars/.lando
+      LANDO_DOMAIN: lndo.site
+      LANDO_HOST_HOME: /home/tars
+      LANDO_HOST_OS: linux
+      LANDO_HOST_IP: 172.26.88.114
+      LANDO_LEIA: 0
+      LANDO_MOUNT: /app
+      LANDO_APP_PROJECT: myfirstdrupal9app
+      LANDO_APP_NAME: my-first-drupal9-app
+      LANDO_APP_ROOT: /home/tars
+      LANDO_APP_ROOT_BIND: /home/tars
+      LANDO_APP_COMMON_NAME: myfirstdrupal9app
+      LANDO_LOAD_KEYS: 'true'
+      BITNAMI_DEBUG: 'true'
+      LANDO_INFO: >-
+        {"appserver":{"service":"appserver","urls":["https://localhost:52268","http://localhost:52269","http://my-first-drupal9-app.lndo.site/","https://my-first-drupal9-app.lndo.site/"],"type":"php","healthy":true,"via":"apache","webroot":"web","config":{"php":"/home/tars/.lando/config/drupal9/php.ini"},"version":"8.1","meUser":"www-data","hasCerts":true,"api":3,"hostnames":["appserver.myfirstdrupal9app.internal"]},"database":{"service":"database","urls":[],"type":"mysql","healthy":true,"internal_connection":{"host":"database","port":"3306"},"external_connection":{"host":"127.0.0.1","port":true},"healthcheck":"bash
+        -c \"[ -f /bitnami/mysql/.mysql_initialized
+        ]\"","creds":{"database":"drupal9","password":"drupal9","user":"drupal9"},"config":{"database":"/home/tars/.lando/config/drupal9/mysql.cnf"},"version":"5.7","meUser":"www-data","hasCerts":false,"api":3,"hostnames":["database.myfirstdrupal9app.internal"]}}
+    env_file: []
+    labels:
+      io.lando.container: 'TRUE'
+      io.lando.id: bb3930c678d6b1a322e9259149c7c9df75a57ab7
+      io.lando.src: /home/tars/.lando.yml
+      io.lando.http-ports: '80,443'
+    volumes:
+      - '/home/tars/.lando/scripts:/helpers'
+  database:
+    networks:
+      default: {}
+    environment:
+      COLUMNS: 256
+      LANDO: 'ON'
+      LANDO_WEBROOT_USER: www-data
+      LANDO_WEBROOT_GROUP: www-data
+      TERM: xterm
+      LANDO_HOST_UID: '1000'
+      LANDO_HOST_GID: '1000'
+      LANDO_HOST_USER: tars
+      LANDO_CA_CERT: /lando/certs/lndo.site.pem
+      LANDO_CA_KEY: /lando/certs/lndo.site.key
+      LANDO_CONFIG_DIR: /home/tars/.lando
+      LANDO_DOMAIN: lndo.site
+      LANDO_HOST_HOME: /home/tars
+      LANDO_HOST_OS: linux
+      LANDO_HOST_IP: 172.26.88.114
+      LANDO_LEIA: 0
+      LANDO_MOUNT: /app
+      LANDO_APP_PROJECT: myfirstdrupal9app
+      LANDO_APP_NAME: my-first-drupal9-app
+      LANDO_APP_ROOT: /home/tars
+      LANDO_APP_ROOT_BIND: /home/tars
+      LANDO_APP_COMMON_NAME: myfirstdrupal9app
+      LANDO_LOAD_KEYS: 'true'
+      BITNAMI_DEBUG: 'true'
+      LANDO_INFO: >-
+        {"appserver":{"service":"appserver","urls":["https://localhost:52268","http://localhost:52269","http://my-first-drupal9-app.lndo.site/","https://my-first-drupal9-app.lndo.site/"],"type":"php","healthy":true,"via":"apache","webroot":"web","config":{"php":"/home/tars/.lando/config/drupal9/php.ini"},"version":"8.1","meUser":"www-data","hasCerts":true,"api":3,"hostnames":["appserver.myfirstdrupal9app.internal"]},"database":{"service":"database","urls":[],"type":"mysql","healthy":true,"internal_connection":{"host":"database","port":"3306"},"external_connection":{"host":"127.0.0.1","port":true},"healthcheck":"bash
+        -c \"[ -f /bitnami/mysql/.mysql_initialized
+        ]\"","creds":{"database":"drupal9","password":"drupal9","user":"drupal9"},"config":{"database":"/home/tars/.lando/config/drupal9/mysql.cnf"},"version":"5.7","meUser":"www-data","hasCerts":false,"api":3,"hostnames":["database.myfirstdrupal9app.internal"]}}
+    env_file: []
+    labels:
+      io.lando.container: 'TRUE'
+      io.lando.id: bb3930c678d6b1a322e9259149c7c9df75a57ab7
+      io.lando.src: /home/tars/.lando.yml
+      io.lando.http-ports: '80,443'
+    volumes:
+      - '/home/tars/.lando/scripts:/helpers'
+version: '3.6'
